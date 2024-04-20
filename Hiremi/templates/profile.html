@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link  href="https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            border: none;
+            outline:none;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+
+        }
+        body{
+            display:flex;
+            background-color: whitesmoke;
+        }
+        #menu .sidebar{
+        
+            position: sticky;
+            top:0;
+            left: 0;
+            bottom:0;
+            width: 300px;
+            height: 100%;
+        
+            flex-grow: 1; 
+            padding:0 ;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.5s linear;
+            background: linear-gradient(357deg,#f13640 -9.96%,#bd2930 49.05%, #280305 113.47% );
+
+        }
+        
+        .logo{
+            height:180px;
+            padding:16px;
+            
+            margin-top: -40px;
+            margin-bottom: 60px;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .logo img{
+            width: 80%;
+            border-radius: 50%;
+            margin-left:20px;
+        }
+        .logo h1{
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: -60px;
+            font-size: medium;
+        }
+        .items{
+            margin-top:40px;
+            
+        }
+        .items li{
+            list-style: none;
+            padding: 15px 0;
+        }
+        .items li img{
+            width:20px;
+            height: 20px;
+            line-height: 30px;
+            text-align: center;
+            margin:0 20px 0 25px;
+        }
+        .items li  a{
+            text-decoration: none;
+            font-weight: 300;
+            color: #fff;
+        }
+        .items li:hover,
+        .active{
+            background: #e0e0e058;
+            cursor:pointer;
+            
+        }
+        .items li:nth-child(1){
+            border-left: 4px solid #fff;
+        }
+        #interface{
+            width:100%;
+            height:100vh;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        #interface .top{
+            background:linear-gradient(180deg,#f13640 -9.96%,#bd2930 49.05%, #61050a 113.47% ); 
+            border-radius: 50%;
+            width:40px;
+            height:40px;
+            align-items: center;
+            justify-content: center;
+            padding: 11px;
+        }
+       
+        .top img{
+            width: 12px;
+        }
+
+        .profile{
+            width: 70%;
+            height: 300px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.1rem;
+            display: flex;
+        }
+        .details{
+            margin-top:5px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.1rem;
+            
+            
+        }
+        .details_a{
+            margin-top: 50px;
+            margin-left: 80px;
+            margin-bottom: 10px;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.1rem;
+        }
+        .update{
+            display: flex;
+        }
+        .pending{
+            color: rgba(255, 190, 16, 1);
+            
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 2dvi;
+            border: 1px solid rgba(255, 190, 16, 1);
+            cursor: pointer;
+            margin-top:-5px;
+            margin-left: 10px;
+        }
+        .verified{
+            color:rgba(39, 191, 148, 1);
+            padding: 8px;
+            font-size: 12px;
+            border-radius: 2dvi;
+            border: 1px solid rgba(39, 191, 148, 1);
+            cursor: pointer;
+            margin-top:-5px;
+            margin-left: 10px;
+        }
+        .rejected{
+            color: #f13640;
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 2dvi;
+            border: 1px solid #f13640;
+            cursor: pointer;
+            margin-top:-5px;
+            margin-left: 10px;
+        }
+        .accept{
+            color: #fff;
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 2dvi;
+            box-shadow: 0px 4px 13px 6px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(97.44deg, #29C770 -6.86%, #126136 101.82%);
+
+            cursor: pointer;
+            margin-top:-5px;
+            margin-left: 10px;
+
+        }
+        .reject{
+            color: #fff;
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 2dvi;
+            box-shadow: 0px 4px 13px 6px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(97.44deg, #F13640 -6.86%, #8B1F25 101.82%);
+
+
+            cursor: pointer;
+            margin-top:-5px;
+            margin-left: 10px;
+
+        }
+        .photo_img{
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+        .photo{
+            padding: 30px;
+            align-items: center;
+            justify-content:flex-end;
+            margin-left: 180px;
+            text-align: center;
+        }
+        .edit{
+            display: flex;
+            align-items: right;
+            justify-content: right;
+            font-family: "Poppins", sans-serif;
+            letter-spacing: 0.1rem;
+        }
+        .edit_img{
+            width:15px;
+            height:15px;
+            border-radius: 0;
+            margin-right:3px;
+            
+        }
+        .contact{
+            width: 35%;
+            height: 300px;
+            margin-left: 40px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            
+        }
+        .personal{
+            width:50%;
+            
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .info{
+            width:70%;
+            margin-left: 40px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .verify_info{
+            width: 70%;
+            
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .verify_details{
+            width: 35%;
+            margin-left: 40px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .comp{
+            width: 100%;
+            
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .boxes{
+            display: flex;
+            
+            margin-top: 10px;
+        }
+        .box_s{
+            background: rgba(95, 210, 99, 1);
+            color: white;
+            padding:5px;
+            text-align: center;
+            border-radius: 5px;
+            width: 40px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        .box{
+            background: rgba(217, 217, 217, 1);
+
+            border-radius: 5px;
+            width: 40px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        @media (max-width: 479px) {
+            
+
+            #menu{
+                width:190px;
+                height:100%;
+                position:fixed;
+                
+            }
+            #menu .sidebar {
+                width: 100%; 
+                height: 100%;
+            }
+            .logo {
+                height: 150px;
+                margin-bottom: 30px;
+                margin-top:20px;
+                
+
+            }
+            .logo img {
+                width: 70%;
+            }
+            .logo h1 {
+                font-size: 0.8rem; 
+                margin-top:-20px;
+            }
+            .items a{
+                font-size: 0.6rem;
+                letter-spacing: 0.5px;
+            }
+            .items li img {
+                width: 15px;
+                height: 15px;
+                margin: 0 15px 0 20px;
+            }
+            #interface{
+                width:100%;
+                position:relative;
+                margin-left: 170px;
+            }
+            .profile{
+                width: 65%;
+                height: 200px;
+                margin-left: 2px;
+            }
+            .pending{
+                font-size:6px;
+                margin-top:2px;
+                margin-left:3px;
+            }
+            .accept,.reject{
+                font-size: 6px;
+                margin-left:5px;
+            }
+            .edit{
+               
+                
+                margin-top: 10px;
+                margin-left: 2px;
+                
+
+            }
+            .photo{
+                padding:2px;
+                margin-top:40px;
+            }
+            .photo p{
+                font-size: 8px;
+            }
+            .photo_img{
+                width: 50px;
+                height: 50px;
+            }
+            
+            .contact{
+                width:35%;
+            }
+            .details_a{
+                font-size: 10px;
+                margin-left: 10px;
+            }
+            .details{
+                margin-left: 5px;
+            }
+            .personal{
+                width:50%
+            }
+            .info{
+                width: 50%;;
+                margin-left: 10px;
+            }
+            .verify_details{
+                margin-left: 20px;
+            }
+            .box,.box_s{
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                font-size: 8px;
+                text-align: center;
+                padding: 3px;
+                margin-left: 2px;
+            }
+
+        }
+        @media (max-width: 844px) {
+            #menu{
+                width:190px;
+                height:100%;
+                position:fixed;
+                
+            }
+            #menu .sidebar {
+                width: 100%; 
+                
+            }
+            .logo {
+                height: 150px;
+                margin-bottom: 30px;
+                margin-top: 10px;
+            }
+            .logo img {
+                width: 70%;
+                margin-left: 20px;
+            }
+            .logo h1 {
+                font-size: 1rem; 
+                margin-top: -40px;
+            }
+            .items {
+                margin-top: 20px;
+            }
+            .items li img {
+                width: 15px;
+                height: 15px;
+                margin: 0 10px;
+            }
+            .items li a {
+                font-size: 0.7rem; 
+            }
+            #interface{
+                width:100%;
+                position:relative;
+                margin-left: 190px;
+            }
+            .profile{
+                
+                height: 250px;
+                margin-left: 2px;
+            }
+            .contact{
+                height:600px;
+            }
+            .edit{
+               
+                justify-content: right;
+                margin-top: -30px;
+                margin-right: -10px;
+                
+            }
+            
+            .details{
+                font-size: 10px;
+            }
+            .details_a{
+                font-size: 10px;
+            }
+            .update{
+                flex-direction: column;
+            }
+            .pending,.verified,.rejected{
+                font-size: 6px;
+
+            }
+            .accept,.reject
+            {
+                font-size: 8px;
+                margin-top: 3px;
+            }
+            .photo{
+                margin-left:0px;
+                font-size: 10px;
+
+            }
+            
+            .photo_img{
+                width: 70px;
+                height: 70px;
+            }
+            .contact{
+                height: 200px;
+            margin-left: 10px;
+
+            }
+            .info{
+                width: 50%;;
+                margin-left: 10px;
+            }
+            .verify_details{
+                margin-left: 20px;
+            }
+            .box,.box_s{
+                width: 15px;
+                height: 15px;
+                border-radius: 2px;
+                font-size: 8px;
+                text-align: center;
+                padding: 3px;
+                margin-left: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="menu">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/static/images/logo.png" alt="logo">
+                <h1>Super Admin</h1>
+            </div>
+            <div class="items">
+                <li class="active">
+                    <a href="#" >
+                        <img src="/static/images/home.png" alt="dashboard">
+                        <b>Dashboard</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/ana.png" alt="dashboard">
+                        <b>Analytics</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/dow.png" alt="dashboard">
+                        <b>App Download Status</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/ment.png" alt="dashboard">
+                        <b>Mentorship</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/training.png" alt="dashboard">
+                        <b>Internship</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/fresher.png" alt="dashboard">
+                        <b>Fresher</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/suitcase.png" alt="dashboard">
+                        <b>Experience</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/cor.png" alt="dashboard">
+                        <b>Corporate Training</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/courses.png" alt="dashboard">
+                        <b>Courses</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/project.png" alt="dashboard">
+                        <b>Project Report</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/account.png" alt="dashboard">
+                        <b>Admin Settings</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/log.png" alt="dashboard">
+                        <b>Logout</b>
+                    </a>
+                </li>
+            </div>
+            
+        </div>
+    </section>
+    <section id="interface">
+        <a style="text-decoration: none; color: inherit;" href="dasss">
+            <div class="top">
+                <img src="/static/images/left.png" alt="left">
+            </div>
+        </a>
+        <div class="first" style="display: flex;">
+            <div class="profile">
+                <div class="details">
+                    <h1 style="color: #f13640;"><b>Profile</b></h1>
+                    <br>
+                    <p><b>Name:</b><span style="color: grey;">&nbsp;Rishu</span></p><br>
+                    <p><b>Date of birth:</b><span style="color: grey;">&nbsp;3-Aug-2003</span></p><br>
+                    <p><b>Gender:</b><span style="color: grey;">&nbsp;Male</span></p><br>
+                    <p><b>Applied Date:</b><span style="color: grey;">&nbsp;14-May-2024</span></p><br>
+                    <div style="display:flex">
+                        {% comment %} <p><b>Status:</b></p>
+                        < class="update">
+                            <div class="pending">Pending</div>
+                            <div class="accept">Accept</div>
+                            <div class="reject">Reject</div> {% endcomment %}
+
+                            <div class="status" style="display:flex;"><p><b>Status: </b></p>
+                                <span id="status" class="pending">Pending</span>
+                            </div>
+                            <div class="buttons" style="display:flex">
+                                <button id="acceptBtn" class="accept" onclick="changeStatus('Verified')">Accept</button>
+                                <button id="rejectBtn" class="reject" onclick="changeStatus('Non-Verified')">Reject</button>
+                            </div>
+                        
+                        <!-- <div class="verified">
+                            Verified
+                        </div> -->
+                    </div>
+
+                </div>
+                <div class="photo">
+                    <div class="edit">
+                        <img src="/static/images/edit.png" alt=""class="edit_img" >
+                         <b>Edit</b>
+                        </div>
+                    <img src="/static/images/pic.png" alt="profile" class="photo_img">
+                    <p style="margin-top:10px"><b>UTR No.</b></p><br>
+                    <p style="color: grey;">3209092243</p>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="details">
+                    <h1 style="color: #f13640;"><b>Contact</b></h1>
+                    <br>
+                    <p><b>E-Mail:</b></p><br>
+                    <p><span style="color: grey;">hiremi@gmail.com</span></p><br>
+                    <p><b>Phone Number:</b></p><br>
+                    <p><span style="color: grey;">81022*****</span></p><br>
+                    <p><b>WhatsApp Number:</b></p><br>
+                    <p><span style="color: grey;">81022*****</span></p><br>
+                </div>
+            </div>
+        </div>
+        <div class="second" style="display: flex;">
+            <div class="personal">
+                <div class="details">
+                    <h1 style="color: #f13640;"><b>Personal Information</b></h1>
+                    <br>
+                    <p><b>Father's Name:</b></p><br>
+                    <p><span style="color: grey;">Name</span></p><br>
+                    <p><b>Birth Place:</b></p><br>
+                    <p><span style="color: grey;">E.g. Madhya Pradesh &nbsp;&nbsp;Bhopal</span></p><br>
+                </div>
+            </div>
+            <div class="info" style="display: flex;">
+                <div class="details">
+                    <h1 style="color: #f13640;"><b>College Information</b></h1>
+                    <br>
+                    <p><b>College Name:</b></p><br>
+                    <p><span style="color: grey;">Name</span></p><br>
+                    <p><b>College State:</b></p><br>
+                    <p><span style="color: grey;">E.g. Madhya Pradesh</span></p><br>
+                </div>
+                <div class="details_a" >
+                    <p><b>Branch:</b></p><br>
+                    <p><span style="color: grey;">E.g. IT</span></p><br>
+                    <p><b>Passing Year:</b></p><br>
+                    <p><span style="color: grey;">E.g. 2025</span></p><br>
+                </div>
+
+            </div>
+        </div>
+        <div class="third" style="display: flex;">
+            <div class="verify_info">
+                <div class="details">
+                    <h1 style="color: #f13640;"><b>Verify Information</b></h1>
+                    <br>
+                    <p><b>College ID/ UAN No.:</b></p><br>
+                    <p><span style="color: grey;">0111it211****</span></p><br>
+                    <p><b>Describe Your Experience:</b></p><br>
+                    <p><span style="color: grey;">Lorem ipsum dolor sit amet consectetur. Neque velit neque ultrices arcu sagittis amet morbi. Sollicitudin neque nisl est faucibus tempor. Feugiat commodo rutrum at faucibus ut consectetur id. Eget in sit porttitor nulla eget sit blandit ultrices non. Aliquam elit ut id mauris faucibus mi pellentesque faucibus a. Duis proin aliquam dui faucibus tortor elementum lacus. Faucibus gravida vestibulum vulputate euismod diam. Mi quis in amet nunc facilisis blandit nulla eu. Enim neque ac phasellus nec elit ornare enim pulvinar. Lorem non ornare amet turpis nisi. Bibendum id vel egestas  dui. Nec aliquam sed morbi massa.</span></p><br>
+
+                </div>
+            </div>
+            <div class="verify_details">
+                <div class="details">
+                    <h1 style="color: #f13640; margin-bottom:20px"><b>Verify Details</b></h1>
+                    <br>
+                    <p><b>Interested Domain:</b></p><br>
+                    <p><span style="color: grey;">E.g. Software Developer</span></p><br><br>
+                    <p><b>Key Skills:</b></p><br>
+                    <p><span style="color: grey;">E.g. UI/UX</span></p><br><br>
+                    <p><b>Key Skills:</b></p><br>
+                    <div class="boxes">
+                        <div class="box_s">1</div>
+                        <div class="box_s">2</div>
+                        <div class="box_s">3</div>
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fourth">
+            <div class="comp">
+                <div class="details">
+                    <h1 style="color: #f13640;"><b>Company Review</b></h1>
+                    <br>
+                    <p><b>Experience Review:</b></p><br>
+                    <p><span style="color: grey;">Lorem ipsum dolor sit amet consectetur. Neque velit neque ultrices arcu sagittis amet morbi. Sollicitudin neque nisl est faucibus tempor. Feugiat commodo rutrum at faucibus ut consectetur id. Eget in sit porttitor nulla eget sit blandit ultrices non. Aliquam elit ut id mauris faucibus mi pellentesque faucibus a. Duis proin aliquam dui faucibus tortor elementum lacus. Faucibus gravida vestibulum vulputate euismod diam. Mi quis in amet nunc facilisis blandit nulla eu. Enim neque ac phasellus nec elit ornare enim pulvinar. Lorem non ornare amet turpis nisi. Bibendum id vel egestas  dui. Nec aliquam sed morbi massa.</span></p><br>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function changeStatus(newStatus) {
+            document.getElementById('status').innerText = newStatus;
+            document.getElementById('status').classList.remove('pending');
+            if (newStatus === 'Verified') {
+                document.getElementById('status').classList.add('verified');
+            } else if (newStatus === 'Non-Verified') {
+                document.getElementById('status').classList.add('rejected');
+            }
+            document.querySelector('.buttons').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

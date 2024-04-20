@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  href="https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            border: none;
+            outline:none;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+
+        }
+        body{
+            display:flex;
+            background-color: whitesmoke;
+        }
+        #menu .sidebar{
+            position: sticky;
+            top:0;
+            left: 0;
+            bottom:0;
+            width: 300px;
+            height: 100%;
+            padding:0 ;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.5s linear;
+            background: linear-gradient(357deg,#f13640 -9.96%,#bd2930 49.05%, #280305 113.47% );
+
+        }
+        
+        .logo{
+            height:180px;
+            padding:16px;
+            
+            margin-top: -40px;
+            margin-bottom: 60px;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .logo img{
+            width: 80%;
+            border-radius: 50%;
+            margin-left:20px;
+        }
+        .logo h1{
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: -60px;
+            font-size: medium;
+        }
+        .items{
+            margin-top:40px;
+            
+        }
+        .items li{
+            list-style: none;
+            padding: 15px 0;
+        }
+        .items li img{
+            width:20px;
+            height: 20px;
+            line-height: 30px;
+            text-align: center;
+            margin:0 20px 0 25px;
+        }
+        .items li  a{
+            text-decoration: none;
+            font-weight: 300;
+            color: #fff;
+        }
+        .items li:hover,
+        .active{
+            background: #e0e0e058;
+            cursor:pointer;
+            
+        }
+        .items li:nth-child(1){
+            border-left: 4px solid #fff;
+        }
+        #interface{
+            width:100%;
+            position:relative;
+        }
+        #interface .navigation {
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 40px;
+            height:60px;
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+            font-family: "Poppins", sans-serif;
+
+        }
+        
+        #interface .navigation .search{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 14px;
+            border: none;
+        }
+        #interface .navigation .search input{
+            border:none;
+            outline:none;
+            font-size:30px;
+            margin-left: 40px;
+            letter-spacing: 0.2rem;
+        }
+        #interface .navigation .profile{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        #interface .navigation .profile img{
+            width: 140px;
+            height: 140px;
+            
+        }
+        .n1{
+            display:flex;
+            justify-content: flex-start ;
+            align-items: center;
+        }
+
+        #interface .heading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            color:#f13640;
+            padding: 10px;
+        }
+        #interface .heading .line{
+            border-color:  rgba(172, 172, 172, 0.62);
+            border-style: solid;
+            border-width: 1px;
+            background-color: rgba(172, 172, 172, 0.62);
+            margin-top: 5px;
+            height: 1px;
+            width: 410px;
+        }
+        #interface .cont1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            gap:180px
+            
+        }
+        #interface .group1 .sub-group{
+            background: #fff;
+            width: 460px;
+            height: 150px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            
+        }
+        #interface .group1 .sub-group img{
+            height:70px
+        }
+        #interface .group1 .sub-group .middle h2{
+            font-size:40px
+        }
+        #interface .group1{
+            width: 460px;
+            height: 150px;
+           
+            border-left: 4px solid #f13640;
+        }
+        .bttn{
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 60px;
+            padding:20px;
+        }
+        .bttn-child{
+            padding: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            border-radius: 2dvi;
+            background: linear-gradient(90deg, #f13640 0.01%, #850a10, #7b040a);
+            cursor: pointer;
+        }
+        .board{
+            padding: 20px;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        table {
+            width: 100%;
+            font-size:18px ;
+
+            
+        }
+        table th{
+            border-bottom: 1px solid black;
+            padding:20px;
+            font-weight: 700;
+
+        }
+        table td{
+            text-align: center;
+            border-bottom: 1px solid grey;
+            padding:20px;
+            color: grey;
+            font-weight:500;
+
+        }
+        #menu-btn{
+            display:none;
+        }
+
+        @media (max-width: 479px) {
+            
+
+            #menu{
+                width:190px;
+                height:100%;
+                position:fixed;
+                
+            }
+            #menu .sidebar {
+                width: 100%; 
+                height: 100%;
+            }
+            .logo {
+                height: 150px;
+                margin-bottom: 30px;
+                margin-top:20px;
+                margin-left:-40px;
+
+            }
+            .logo img {
+                width: 70%;
+                margin-left:-50px;
+            }
+            .logo h1 {
+                font-size: 0.4rem; 
+            }
+            
+            
+            #interface{
+                margin-left: 190px;
+                width: 100%;
+            }
+            #interface .navigation .n1{
+                width: 100%;
+            }
+
+            #interface .board {
+                
+                padding:2px;
+                font-size: 5px;
+
+            }
+            #interface .board table{
+                margin-left: 10px;
+                font-size: 12px;
+
+                
+            }
+
+            
+        }
+        
+ 
+        
+        @media (max-width: 844px) {
+            #menu .sidebar {
+                width: 100%; 
+                
+            }
+            .logo {
+                height: 150px;
+                margin-bottom: 30px;
+            }
+            .logo img {
+                width: 70%;
+                margin-left: 30px;
+            }
+            .logo h1 {
+                font-size: 1rem; 
+                margin-top: -40px;
+            }
+            .items {
+                margin-top: 20px;
+            }
+            .items li img {
+                width: 15px;
+                height: 15px;
+                margin: 0 10px;
+            }
+            .items li a {
+                font-size: 0.9rem; 
+            }
+            
+            #interface .cont1{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                
+            }
+            #interface .group1 .sub-group{
+                background: #fff;
+                width: 100%;
+                height: 120px;
+                border-radius: 20px;
+                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+                display:flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px;
+                
+            }
+            #interface .group1 .sub-group img{
+                height:40px
+            }
+            #interface .group1{
+                width: 460px;
+                height: 120px;
+            
+                border-left: 4px solid #f13640;
+            }
+        
+            
+            #interface {
+                padding: 10px; /* Add padding for better spacing on smaller screens */
+            }
+            #interface .navigation,
+            #interface .heading,
+            .board {
+                margin: 10px; /* Add margin for better spacing on smaller screens */
+            }
+            #interface .navigation .search input {
+                font-size: 18px; 
+            }
+            #interface .navigation .profile img {
+                width: 80px; /* Decrease profile image size for smaller screens */
+                height: 80px; /* Decrease profile image size for smaller screens */
+            }
+            #interface .heading h3 {
+                font-size: 0.8rem; 
+            }
+            #interface .heading .line {
+                width: 140px; /* Decrease line width for smaller screens */
+            }
+            #interface .cont1 {
+                flex-direction: column; /* Change flex direction for smaller screens */
+                gap: 20px; /* Add gap between elements for smaller screens */
+                align-items: center; /* Center align elements for smaller screens */
+            }
+            #interface .group1 .sub-group {
+                width: 80%; /* Adjust width for smaller screens */
+            }
+            #interface .group1 .sub-group img {
+                height: 50px; /* Decrease image size for smaller screens */
+            }
+            .bttn-child {
+                font-size: 0.8rem; 
+                padding: 8px; /* Adjust padding for smaller screens */
+            }
+            table{
+                font-size: 15px;
+            }
+
+        }
+
+       
+        
+    </style>
+    <title>Dashboard</title>
+</head>
+<body>
+    <section id="menu">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/static/images/logo.png" alt="logo">
+                <h1>Super Admin</h1>
+            </div>
+            <div class="items">
+                <li class="active">
+                    <a href="#" >
+                        <img src="/static/images/home.png" alt="dashboard">
+                        <b>Dashboard</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/ana.png" alt="dashboard">
+                        <b>Analytics</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/dow.png" alt="dashboard">
+                        <b>App Download Status</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/ment.png" alt="dashboard">
+                        <b>Mentorship</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/training.png" alt="dashboard">
+                        <b>Internship</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/fresher.png" alt="dashboard">
+                        <b>Fresher</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/suitcase.png" alt="dashboard">
+                        <b>Experience</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/cor.png" alt="dashboard">
+                        <b>Corporate Training</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/courses.png" alt="dashboard">
+                        <b>Courses</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/project.png" alt="dashboard">
+                        <b>Project Report</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/account.png" alt="dashboard">
+                        <b>Admin Settings</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="/static/images/log.png" alt="dashboard">
+                        <b>Logout</b>
+                    </a>
+                </li>
+            </div>
+            
+        </div>
+    </section>
+    <section id="interface">
+        <div class="navigation">
+            <div class="n1">
+                
+                <div class="search">
+                    <img src="/static/images/search.png" alt="search">
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+                <div class="profile">
+                    <img src="/static/images/logo.png" alt ="logo">
+                </div>
+            
+        </div>
+        <div class="heading">
+            <div style="margin-right: 30px;" class="line"></div>
+            <h3>Account Status All</h3>
+            <div style="margin-left: 30px;"class="line"></div>
+        </div>
+        <div  class="cont1">
+            <div class="group1">
+                <div class="sub-group">
+                    <img src="/static/images/user1.png" alt=""/>
+                    <a style="text-decoration: none;color: inherit;" href="{% url 'totalaccount' %}" ><div  class="middle" style="font-weight: 700;">
+                        <h2 style="color:#f13640;">587</h2>
+                        <span >Total Accounts Created</span><br>
+                        <div style="margin-top: 30px; cursor:pointer" ><span style="color:#f13640;">View All <img style="width:15px ;height:10px" src="/static/images/arrow.png"alt=""/> </span></div>
+                    </div>
+                    </a>
+                    <div class="cor" style="margin-top: 80px; font-weight:700;text-align:right;">
+                        <span style="color:aqua">+40%</span><br>
+                        <p style="font-size: small; color:grey; ">This month</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="group1">
+                <div class="sub-group">
+                    <img src="/static/images/set.png" alt=""/>
+                    <div  class="middle" style="font-weight: 700;">
+                        <h2 style="color:#f13640; ">384</h2>
+                        <span >Total Accounts Verified</span><br>
+                        <div style="margin-top: 30px; cursor:pointer" ><span style="color:#f13640;">View All <img style="width:15px ;height:10px" src="/static/images/arrow.png"alt=""/> </span></div>
+                    </div>
+                    <div class="cor" style="margin-top: 80px; font-weight:700;text-align:right;">
+                        <span style="color:aqua">+32%</span><br>
+                        <p style="font-size: small; color:grey; ">This month</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div  class="cont1">
+            <div class="group1">
+                <div class="sub-group">
+                    <img src="/static/images/time.png" alt=""/>
+                    <div  class="middle" style="font-weight: 700; margin-right:-60px;">
+                        <h2 style="color:#f13640;">220</h2>
+                        <span >Payment Done (Under Verification)</span><br>
+                        <div style="margin-top: 30px; cursor:pointer" ><span style="color:#f13640;">View All <img style="width:15px ;height:10px" src="/static/images/arrow.png"alt=""/> </span></div>
+                    </div>
+                    <div class="cor" style="margin-top: 80px; font-weight:700;text-align:right;">
+                        <span style="color:aqua">+32%</span><br>
+                        <p style="font-size: small; color:grey; ">This month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="group1">
+                <div class="sub-group">
+                    <img src="/static/images/doc.png" alt=""/>
+                    <div  class="middle" style="font-weight: 700;">
+                        <h2 style="color:#f13640;">280</h2>
+                        <span >Non-Verified Accounts</span><br>
+                        <div style="margin-top: 30px; cursor:pointer" ><span style="color:#f13640;">View All <img style="width:15px ;height:10px" src="/static/images/arrow.png"alt=""/> </span></div>
+                    </div>
+                    <div class="cor" style="margin-top: 80px; font-weight:700;text-align:right;">
+                        <span style="color:aqua">+32%</span><br>
+                        <p style="font-size: small; color:grey; ">This month</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="heading">
+            <div style="margin-right: 30px;" class="line"></div>
+            <h3>State Ranking</h3>
+            <div style="margin-left: 30px;"class="line"></div>
+        </div>
+        <div class="bttn">
+            <button class="bttn-child">Download App</button>
+            <button style="margin-left:15px" class="bttn-child">Accounts Verified</button>
+            <button style="margin-left:15px" class="bttn-child"> Non-Verified Accounts</button>
+
+        </div>
+        <div class="board">
+            <table >
+                
+                    <tr >
+                        <th>S.No</th>
+                        <th>State List</th>
+                        <th>Download App</th>
+                        <th style="color:rgba(39, 191, 148, 1)">Accounts Verified</th>
+                        <th style="color:rgba(241, 54, 64, 1)">Non-Verified Accounts</th>
+
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Andhra Pradesh</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Arunachal Pradesh</td>
+                        <td>500</td>
+                        <td style="color:rgba(39, 191, 148, 1)">430</td>
+                        <td style="color:rgba(241, 54, 64, 1)">70</td>
+
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Assam</td>
+                        <td>300</td>
+                        <td style="color:rgba(39, 191, 148, 1)">235</td>
+                        <td style="color:rgba(241, 54, 64, 1)">65</td>
+
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Bihar</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Chhattisgarh</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Goa</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>Gujarat</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>8.</td>
+                        <td>Haryana</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>9.</td>
+                        <td>Himachal Pradesh</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>10.</td>
+                        <td>Jharkhand</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>11.</td>
+                        <td>Karnataka</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>12.</td>
+                        <td>Kerala</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>13.</td>
+                        <td>Madhya Pradesh</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>14.</td>
+                        <td>Maharashtra</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>15.</td>
+                        <td>Manipur</td>
+                        <td>900</td>
+                        <td style="color:rgba(39, 191, 148, 1)">500</td>
+                        <td style="color:rgba(241, 54, 64, 1)">400</td>
+
+                    </tr>
+                    <tr>
+                        <td>16.</td>
+                        <td>Meghalaya</td>
+                        <td >500</td>
+                        <td style="color:rgba(39, 191, 148, 1)">430</td>
+                        <td style="color:rgba(241, 54, 64, 1)">70</td>
+
+                    </tr>
+                    <tr>
+                        <td>17.</td>
+                        <td>Mizoram</td>
+                        <td>300</td>
+                        <td style="color:rgba(39, 191, 148, 1)">235</td>
+                        <td style="color:rgba(241, 54, 64, 1)">65</td>
+
+                    </tr>
+
+            </table>
+        </div>
+    </section>
+    <script>
+        
+    </script>
+
+</body>
+</html>
